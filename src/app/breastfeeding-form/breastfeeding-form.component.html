@@ -1,0 +1,12 @@
+<form [formGroup]="breastfeedingForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="start-time">Comienzo de lactancia:</label>
+      <input type="time" id="start-time" formControlName="start_time" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="end-time">Fin de lactancia:</label>
+      <input type="time" id="end-time" formControlName="end_time" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="breastfeedingForm">Guardar</button>
+  </form>
+  

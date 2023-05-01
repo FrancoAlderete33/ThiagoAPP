@@ -36,14 +36,8 @@ export class BreastfeedingFormComponent {
       parseInt(this.breastfeedingForm.value.end_time.split(':')[1])
     );
 
-    const duration = {
-      ticks: 0,
-      days: 0,
-      hours: 0,
-      milliseconds: 0,
-      minutes: (endTime.getTime() - startTime.getTime()) / 60000,
-      seconds: 0
-    };
+    const duration = (endTime.getTime() - startTime.getTime()) / 60000; // Duración en minutos
+
 
     //? Objeto para el back 
     const breastfeeding = {
@@ -55,7 +49,6 @@ export class BreastfeedingFormComponent {
     };
 
     this.breasFeedingService.createBreastfeeding(breastfeeding).subscribe(data => {
-      console.log(data);
       console.log('Lactancia Guardada Correctamente');
     });
 

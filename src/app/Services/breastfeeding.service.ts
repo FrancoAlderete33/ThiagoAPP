@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BreastfeedingService {
-  urlBase: String = 'https://localhost:7061/api/BreastFeeding/'
+  urlBase: String = 'https://localhost:7061/api/Breastfeeding/'
 
   constructor(private httpClient: HttpClient) { }
 

@@ -1,9 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreastfeedingService {
+  urlBase: String = 'https://localhost:7061/api/BreastFeeding/'
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+
+  createBreastfeeding(BreastFeedingObj: any) {
+    return this.httpClient.post<any>(`${this.urlBase}NewOne`, BreastFeedingObj);
+  }
 }

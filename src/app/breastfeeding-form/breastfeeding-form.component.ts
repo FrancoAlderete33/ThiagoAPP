@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BreastfeedingService } from '../Services/breastfeeding.service';
 
 @Component({
   selector: 'app-breastfeeding-form',
@@ -9,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class BreastfeedingFormComponent {
   breastfeedingForm!: FormGroup ; 
   
-  constructor(){ }
+  constructor(private breasFeedingService : BreastfeedingService){ }
 
 
   ngOnInit(){
@@ -21,7 +22,44 @@ export class BreastfeedingFormComponent {
 
 
 
-  onSubmit(){
+  onSubmit(): void{
+
+    const startTime = new Date();
+    startTime.setHours(
+      parseInt(this.breastfeedingForm.value.start_time.split(':')[0]),
+      parseInt(this.breastfeedingForm.value.start_time.split(':')[1])
+    );
+
+    const endTime = new Date();
+    endTime.setHours(
+      parseInt(this.breastfeedingForm.value.end_time.split(':')[0]),
+      parseInt(this.breastfeedingForm.value.end_time.split(':')[1])
+    );
+
+    const duration = {
+      ticks: 0,
+      days: 0,
+      hours: 0,
+      milliseconds: 0,
+      minutes: (endTime.getTime() - startTime.getTime()) / 60000,
+      seconds: 0
+    };
+
+    //? Objeto para el back 
+    const breastfeeding = {
+      id: 0,
+      start_time: startTime.toISOString(),
+      end_time: endTime.toISOString(),
+      duration: duration,
+      date: new Date().toISOString()
+    };
+
+    this.breasFeedingService.createBreastfeeding(breastfeeding).subscribe(data => {
+      console.log(data);
+      console.log('Lactancia Guardada Correctamente');
+    });
+
+    this.breastfeedingForm.reset();
 
   }
   

@@ -1,0 +1,16 @@
+<div class="container">
+    <h2 class="text-center mt-4">Control de sueño</h2>
+  
+    <div class="d-flex flex-wrap justify-content-center mt-4">
+      <div *ngFor="let sleep of sleeps" class="card text-center mb-3 mx-2" style="max-width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Periodo de Sueño: {{sleep.date | date: 'dd/MM'}}</h5>
+          <p class="card-text">Inicio de Sueño : {{formatTime(sleep.start_time) }} </p>
+          <p class="card-text">Fin de Sueño : {{formatTime(sleep.end_time) }} </p>
+          <p class="card-text">Duración de Sueño : {{sleep.durationInMinutes}} Minutos </p>
+          <a href="#" class="btn btn-warning">Editar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  

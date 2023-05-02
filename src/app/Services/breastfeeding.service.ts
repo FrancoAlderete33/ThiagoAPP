@@ -14,7 +14,8 @@ export class BreastfeedingService {
     return this.httpClient.post<any>(`${this.urlBase}NewOne`, BreastFeedingObj);
   }
 
-  getBreastfeedingsByToday(){
-    return this.httpClient.get<any>(`${this.urlBase}Today`);
-  }
+  getBreastfeedingsByToday(clientTimeZone: string){
+    return this.httpClient.get<any>(`${this.urlBase}Today?clientTimeZone=${clientTimeZone}`);
+}
+
 }

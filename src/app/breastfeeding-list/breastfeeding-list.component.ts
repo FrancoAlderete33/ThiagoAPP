@@ -10,15 +10,19 @@ import { BreastfeedingService } from '../Services/breastfeeding.service';
 export class BreastfeedingListComponent {
   breastFeedings: any[] = [];
 
-  constructor(private http: HttpClient,
-              private breastfeedingService: BreastfeedingService){}
 
-  ngOnInit(): void {
-    this.breastfeedingService.getBreastfeedingsByToday().subscribe((data => {
-      this.breastFeedings = data;
-    }))
-  }
+  constructor(private breastfeedingService: BreastfeedingService){}
 
+ ngOnInit(): void {
+    // Obtener la zona horaria del cliente desde el navegador
+    const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    this.breastfeedingService.getBreastfeedingsByToday(clientTimeZone).subscribe(data => {
+        this.breastFeedings = data;
+    });
+}
+
+  //* Funcion para formatear el tiempo
   formatTime(dateString: string) {
     const date = new Date(dateString);
     const hours = date.getHours();

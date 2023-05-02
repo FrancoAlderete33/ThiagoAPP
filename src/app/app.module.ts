@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BreastfeedingFormComponent } from './breastfeeding-form/breastfeeding-form.component';
 import { BreastfeedingListComponent } from './breastfeeding-list/breastfeeding-list.component';
+import { SleepFormComponent } from './sleep-form/sleep-form.component';
+import { SleepListComponent } from './sleep-list/sleep-list.component';
 
 
 
@@ -16,7 +18,9 @@ import { BreastfeedingListComponent } from './breastfeeding-list/breastfeeding-l
   declarations: [
     AppComponent,
     BreastfeedingFormComponent,
-    BreastfeedingListComponent
+    BreastfeedingListComponent,
+    SleepFormComponent,
+    SleepListComponent
   
   ],
   imports: [

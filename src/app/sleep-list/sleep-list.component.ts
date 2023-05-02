@@ -13,11 +13,15 @@ export class SleepListComponent {
   constructor(private sleepService : SleepService){}
 
   ngOnInit(): void {
-    this.sleepService.getSleepsByToday().subscribe((data => {
+     // Obtener la zona horaria del cliente desde el navegador
+     const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    this.sleepService.getSleepsByToday(clientTimeZone).subscribe((data => {
       this.sleeps = data;
     }))
   }
 
+  //* Funcion para formatear el tiempo
   formatTime(dateString: string) {
     const date = new Date(dateString);
     const hours = date.getHours();

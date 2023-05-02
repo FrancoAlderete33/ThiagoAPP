@@ -15,7 +15,8 @@ export class SleepService {
     return this.httpClient.post<any>(`${this.urlBase}NewOne`, SleepsObj);
   }
 
-  getSleepsByToday(){
-    return this.httpClient.get<any>(`${this.urlBase}Today`);
+  getSleepsByToday(clientTimeZone: string) {
+    return this.httpClient.get<any>(`${this.urlBase}Today?clientTimeZone=${clientTimeZone}`);
   }
+
 }

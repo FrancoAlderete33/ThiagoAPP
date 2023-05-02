@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BreastfeedingFormComponent } from './breastfeeding-form/breastfeeding-form.component';
+import { BreastfeedingListComponent } from './breastfeeding-list/breastfeeding-list.component';
 
 
 
@@ -14,7 +15,8 @@ import { BreastfeedingFormComponent } from './breastfeeding-form/breastfeeding-f
 @NgModule({
   declarations: [
     AppComponent,
-    BreastfeedingFormComponent
+    BreastfeedingFormComponent,
+    BreastfeedingListComponent
   
   ],
   imports: [

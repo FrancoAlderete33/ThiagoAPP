@@ -13,4 +13,8 @@ export class BreastfeedingService {
   createBreastfeeding(BreastFeedingObj: any) {
     return this.httpClient.post<any>(`${this.urlBase}NewOne`, BreastFeedingObj);
   }
+
+  getBreastfeedingsByToday(){
+    return this.httpClient.get<any>(`${this.urlBase}Today`);
+  }
 }

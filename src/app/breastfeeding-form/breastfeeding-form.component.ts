@@ -44,7 +44,7 @@ export class BreastfeedingFormComponent {
       id: 0,
       start_time: startTime.toISOString(),
       end_time: endTime.toISOString(),
-      duration: duration,
+      durationInMinutes: duration,
       date: new Date().toISOString()
     };
 

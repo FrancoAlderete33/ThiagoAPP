@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { BreastfeedingService } from '../../../Services/breastfeeding.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-breastfeeding-list',
@@ -11,7 +12,8 @@ export class BreastfeedingListComponent {
   breastFeedings: any[] = [];
 
 
-  constructor(private breastfeedingService: BreastfeedingService){}
+  constructor(private breastfeedingService: BreastfeedingService,
+              private router: Router){}
 
  ngOnInit(): void {
     // Obtener la zona horaria del cliente desde el navegador

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BreastfeedingFormComponent } from './breastfeeding-form/breastfeeding-form.component';
-import { BreastfeedingListComponent } from './breastfeeding-list/breastfeeding-list.component';
-import { SleepFormComponent } from './sleep-form/sleep-form.component';
-import { SleepListComponent } from './sleep-list/sleep-list.component';
+import { BreastfeedingFormComponent } from './Components/Breastfeeding/breastfeeding-form/breastfeeding-form.component';
+import { BreastfeedingListComponent } from './Components/Breastfeeding/breastfeeding-list/breastfeeding-list.component';
+import { SleepFormComponent } from './Components/Sleep/sleep-form/sleep-form.component';
+import { SleepListComponent } from './Components/Sleep/sleep-list/sleep-list.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'breastfeeding-form'},

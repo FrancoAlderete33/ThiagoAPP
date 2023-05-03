@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { BreastfeedingService } from '../Services/breastfeeding.service';
+import { BreastfeedingService } from '../../../Services/breastfeeding.service';
 
 @Component({
   selector: 'app-breastfeeding-list',

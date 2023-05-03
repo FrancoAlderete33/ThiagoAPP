@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { SleepService } from '../Services/sleep.service';
+import { SleepService } from '../../../Services/sleep.service';
 
 @Component({
   selector: 'app-sleep-list',

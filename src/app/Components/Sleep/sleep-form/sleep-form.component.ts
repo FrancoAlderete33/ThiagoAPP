@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SleepService } from '../Services/sleep.service';
+import { SleepService } from '../../../Services/sleep.service';
 
 @Component({
   selector: 'app-sleep-form',

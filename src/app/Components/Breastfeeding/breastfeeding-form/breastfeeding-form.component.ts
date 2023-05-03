@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BreastfeedingService } from '../Services/breastfeeding.service';
+import { BreastfeedingService } from '../../../Services/breastfeeding.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-breastfeeding-form',
@@ -10,7 +12,9 @@ import { BreastfeedingService } from '../Services/breastfeeding.service';
 export class BreastfeedingFormComponent {
   breastfeedingForm!: FormGroup ; 
   
-  constructor(private breasFeedingService : BreastfeedingService){ }
+  constructor(private breasFeedingService : BreastfeedingService,
+              private activatedRoute : ActivatedRoute,
+              private router: Router){ }
 
 
   ngOnInit(){
@@ -50,10 +54,22 @@ export class BreastfeedingFormComponent {
 
     this.breasFeedingService.createBreastfeeding(breastfeeding).subscribe(data => {
       console.log('Lactancia Guardada Correctamente');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Toma Cargada correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      }).then((result => {
+        setTimeout(() => {
+          this.router.navigate(['/breastfeeding-list'])
+
+        }, 400)
+      }))
     });
 
     this.breastfeedingForm.reset();
 
   }
-  
+
 }

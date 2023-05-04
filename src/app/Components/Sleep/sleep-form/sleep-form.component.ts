@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SleepService } from '../../../Services/sleep.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-sleep-form',
@@ -10,7 +13,8 @@ import { SleepService } from '../../../Services/sleep.service';
 export class SleepFormComponent {
   sleepForm!: FormGroup ; 
   
-  constructor(private sleepService : SleepService){ }
+  constructor(private sleepService : SleepService,
+              private router: Router){ }
 
 
   ngOnInit(){
@@ -49,7 +53,19 @@ export class SleepFormComponent {
     };
 
     this.sleepService.createSleeps(sleepObj).subscribe(data => {
-      console.log('Periodo de sueño Guardado Correctamente');
+      console.log('Lactancia guardada correctamente');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Toma Cargada correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      }).then((result => {
+        setTimeout(() => {
+          this.router.navigate(['/breastfeeding-list'])
+    
+        }, 400)
+      }))
     });
 
     this.sleepForm.reset();

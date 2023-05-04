@@ -53,7 +53,7 @@ export class BreastfeedingFormComponent {
     };
 
     this.breasFeedingService.createBreastfeeding(breastfeeding).subscribe(data => {
-      console.log('Lactancia Guardada Correctamente');
+      console.log('Lactancia guardada correctamente');
       Swal.fire({
         position: 'center',
         icon: 'success',

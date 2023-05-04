@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { BreastfeedingService } from '../../../Services/breastfeeding.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-breastfeeding-list',
@@ -33,6 +34,35 @@ export class BreastfeedingListComponent {
     const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
     const formattedMinutes = minutes.toString().padStart(2, '0');
     return `${formattedHours}:${formattedMinutes} ${amPm}`;
+  }
+
+  onDelete(breastFeedingId: number) {
+    Swal.fire({
+      title: '¿Está seguro de que desea eliminar este periodo de lactancia?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.breastfeedingService.deleteBreastFeeding(breastFeedingId).subscribe(() => {
+          Swal.fire({
+            title: 'Periodo de lactancia eliminado',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            // Actualizar la lista de periodos de lactancia después de eliminar uno
+            this.breastFeedings = this.breastFeedings.filter(
+              (breastFeeding) => breastFeeding.id !== breastFeedingId
+            )
+          });
+        });
+      }
+    });
   }
   
   

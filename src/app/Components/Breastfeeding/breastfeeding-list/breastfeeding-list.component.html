@@ -1,18 +1,22 @@
 <div class="container">
-    <h2 class="text-center mt-4 text-danger">Control de Lactancia</h2>
-    
-  
-    <div class="d-flex flex-wrap justify-content-center mt-4">
-      <div *ngFor="let breastFeeding of breastFeedings" class="card text-center mb-3 mx-2" style="max-width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Periodo de Lactancia: {{breastFeeding.date | date: 'dd/MM'}}</h5>
-          <p class="card-text">Inicio de toma : {{formatTime(breastFeeding.start_time) }} </p>
-          <p class="card-text">Fin de toma : {{formatTime(breastFeeding.end_time) }} </p>
-          <p class="card-text">Duración de toma : {{breastFeeding.durationInMinutes}} Minutos </p>
-          <a  class="btn btn-warning mx-2"  [routerLink]="['/breastfeeding/edit', breastFeeding.id]">Editar</a>
-          <a  class="btn btn-danger mx-2">Eliminar</a>
-        </div>
+  <h2 class="text-center mt-4 text-danger">Control de Lactancia</h2>
+
+  <div *ngIf="breastFeedings.length > 0; else noBreastFeedings" class="d-flex flex-wrap justify-content-center mt-4">
+    <div *ngFor="let breastFeeding of breastFeedings" class="card text-center mb-3 mx-2" style="max-width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Periodo de Lactancia: {{breastFeeding.date | date: 'dd/MM'}}</h5>
+        <p class="card-text">Inicio de toma : {{formatTime(breastFeeding.start_time) }} </p>
+        <p class="card-text">Fin de toma : {{formatTime(breastFeeding.end_time) }} </p>
+        <p class="card-text">Duración de toma : {{breastFeeding.durationInMinutes}} Minutos </p>
+        <a class="btn btn-warning mx-2" [routerLink]="['/breastfeeding/edit', breastFeeding.id]">Editar</a>
+        <a class="btn btn-danger mx-2" (click)="onDelete(breastFeeding.id)">Eliminar</a>
       </div>
     </div>
   </div>
-  
+
+  <ng-template #noBreastFeedings>
+    <div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+      <h3>No hay periodos de lactancia para mostrar</h3>
+    </div>
+  </ng-template>
+</div>

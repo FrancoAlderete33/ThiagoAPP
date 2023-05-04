@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ThiagoAPP';
+
+  hideFooter = false;
+
+  toggleFooter() {
+    this.hideFooter = !this.hideFooter;
+  }
 }

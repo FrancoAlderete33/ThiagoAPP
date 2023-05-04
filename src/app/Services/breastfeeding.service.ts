@@ -33,5 +33,9 @@ export class BreastfeedingService {
   updateBreastfeeding(updatedBreastfeeding: any) {
     return this.httpClient.put<any>(`${this.urlBase}update/${updatedBreastfeeding.id}`, updatedBreastfeeding);
   }
+
+  deleteBreastFeeding(breastFeedingId : number){
+    return this.httpClient.delete<any>(`${this.urlBase}delete/${breastFeedingId}`);
+  }
   
 }

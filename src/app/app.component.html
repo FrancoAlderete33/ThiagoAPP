@@ -15,4 +15,19 @@
       </ul>
     </nav>
   </header>
-<router-outlet></router-outlet>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+<footer [ngClass]="{ 'hidden': hideFooter }">
+  <div class="footer-top" (click)="toggleFooter()">
+    <h3>Listados</h3>
+  </div>
+  <nav>
+    <ul>
+      <li><a routerLink="/breastfeeding-list"><img class="img-menu" src="../assets/amamantamiento.png" alt="">Control de Tomas</a></li>
+      <li><a routerLink="/sleep-list"><img class="img-menu" src="../assets/bebe-durmiendo.png" alt="">Control de Sueño</a></li>
+      <li><a routerLink=""><img class="img-menu" src="../assets/caca.png" alt="">Control de heces</a></li>
+    </ul>
+  </nav>
+</footer>

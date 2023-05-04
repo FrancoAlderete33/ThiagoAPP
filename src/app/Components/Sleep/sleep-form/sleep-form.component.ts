@@ -62,7 +62,7 @@ export class SleepFormComponent {
         timer: 1500
       }).then((result => {
         setTimeout(() => {
-          this.router.navigate(['/breastfeeding-list'])
+          this.router.navigate(['/sleep-list'])
     
         }, 400)
       }))

@@ -19,4 +19,8 @@ export class SleepService {
     return this.httpClient.get<any>(`${this.urlBase}Today?clientTimeZone=${clientTimeZone}`);
   }
 
+  deleteSleep(sleepId : number){
+    return this.httpClient.delete<any>(`${this.urlBase}delete/${sleepId}`);
+  }
+
 }

@@ -16,11 +16,9 @@ const routes: Routes = [
   {path: 'sleep-form', component: SleepFormComponent},
   {path: 'sleep-list', component: SleepListComponent },
   {path: 'sleep/edit/:id', component: SleepEditComponent },
-  
   {path: 'breastfeeding-form', component: BreastfeedingFormComponent},
   {path: 'breastfeeding-list', component: BreastfeedingListComponent },
   {path: 'breastfeeding/edit/:id', component: BreastfeedingEditComponent },
-
   {path: 'bowelmovement-form', component: BowelmovementFormComponent },
   {path: 'bowelmovement-list', component: BowelmovementListComponent },
   {path: 'bowelmovement/edit/:id', component: BowelmovementEditComponent }

@@ -1,1 +1,22 @@
-<p>bowelmovement-list works!</p>
+<div class="container">
+    <h2 class="text-center mt-4 text-danger">Control de Heces</h2>
+  
+    <div *ngIf="bowelMovements.length > 0; else noBowelMovements" class="d-flex flex-wrap justify-content-center mt-4">
+      <div *ngFor="let bowelMovement of bowelMovements" class="card text-center mb-3 mx-2" style="max-width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Fecha: {{bowelMovement.date | date: 'dd/MM'}}</h5>
+          <p class="card-text">Hora : {{formatTime(bowelMovement.time) }}</p>
+          <p class="card-text">Tipo : {{bowelMovement.type}}</p>
+          <a class="btn btn-warning mx-2" [routerLink]="['/bowelmovement/edit', bowelMovement.id]">Editar</a>
+          <a class="btn btn-danger mx-2" (click)="onDelete(bowelMovement.id)">Eliminar</a>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #noBowelMovements>
+      <div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+        <h3>No hay anotaciones de Heces para mostrar</h3>
+      </div>
+    </ng-template>
+  </div>
+  

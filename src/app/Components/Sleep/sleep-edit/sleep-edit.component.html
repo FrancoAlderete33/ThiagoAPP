@@ -1,0 +1,16 @@
+<div class="container">
+    <h2 class="text-center mt-4 text-danger">Editar periodo de Sueño</h2>
+    <div class="d-flex align-items-center justify-content-center" style="height: 50vh;">
+        <form [formGroup]="sleepForm" (ngSubmit)="onSubmit()" class="w-50">
+            <div class="form-group mb-3">
+                <label for="start-time">Comienzo de sueño:</label>
+                <input type="time" id="start-time" formControlName="start_time" class="form-control">
+            </div>
+            <div class="form-group mb-3">
+                <label for="end-time">Fin de sueño:</label>
+                <input type="time" id="end-time" formControlName="end_time" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="sleepForm.invalid">Guardar</button>
+        </form>
+    </div>
+</div>

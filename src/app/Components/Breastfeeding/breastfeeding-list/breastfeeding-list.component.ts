@@ -14,18 +14,18 @@ export class BreastfeedingListComponent {
 
 
   constructor(private breastfeedingService: BreastfeedingService,
-              private router: Router){}
+    private router: Router) { }
 
- ngOnInit(): void {
+  ngOnInit(): void {
     // Obtener la zona horaria del cliente desde el navegador
     const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     this.breastfeedingService.getBreastfeedingsByToday(clientTimeZone).subscribe(data => {
-        this.breastFeedings = data;
+      this.breastFeedings = data;
     });
-}
+  }
 
-  //* Funcion para formatear el tiempo
+  //* Funcion para formatear el tiempo 
   formatTime(dateString: string) {
     const date = new Date(dateString);
     const hours = date.getHours();
@@ -35,6 +35,16 @@ export class BreastfeedingListComponent {
     const formattedMinutes = minutes.toString().padStart(2, '0');
     return `${formattedHours}:${formattedMinutes} ${amPm}`;
   }
+
+  //* Funcion para formatear el tiempo si los minutos son mas > 60
+  formatDuration(durationInMinutes: number): string {
+    const hours = Math.floor(durationInMinutes / 60);
+    const minutes = durationInMinutes % 60;
+    const hoursString = hours > 0 ? `${hours} hora${hours > 1 ? 's' : ''}` : '';
+    const minutesString = minutes > 0 ? `${minutes} minuto${minutes > 1 ? 's' : ''}` : '';
+    return `${hoursString} ${minutesString}`;
+  }
+
 
   onDelete(breastFeedingId: number) {
     Swal.fire({
@@ -64,6 +74,6 @@ export class BreastfeedingListComponent {
       }
     });
   }
-  
-  
+
+
 }

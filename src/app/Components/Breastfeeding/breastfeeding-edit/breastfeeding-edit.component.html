@@ -1,4 +1,6 @@
-<div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+<div class="container">
+  <h2 class="text-center mt-4 text-danger">Editar periodo de lactancia</h2>
+  <div class="d-flex align-items-center justify-content-center" style="height: 50vh;">
     <form [formGroup]="breastfeedingForm" (ngSubmit)="onSubmit()" class="w-50">
       <div class="form-group mb-3">
         <label for="start-time">Comienzo de lactancia:</label>
@@ -11,4 +13,5 @@
       <button type="submit" class="btn btn-primary btn-block" [disabled]="breastfeedingForm.invalid">Guardar</button>
     </form>
   </div>
-  
+</div>
+

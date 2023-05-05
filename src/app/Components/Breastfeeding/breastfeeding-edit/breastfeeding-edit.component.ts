@@ -82,7 +82,7 @@ export class BreastfeedingEditComponent {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Toma actualizada correctamente',
+          title: 'Lactancia actualizada correctamente',
           showConfirmButton: false,
           timer: 1500
         }).then((result => {

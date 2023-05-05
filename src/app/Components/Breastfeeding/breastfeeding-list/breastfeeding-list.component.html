@@ -7,7 +7,7 @@
         <h5 class="card-title">Periodo de Lactancia: {{breastFeeding.date | date: 'dd/MM'}}</h5>
         <p class="card-text">Inicio de toma : {{formatTime(breastFeeding.start_time) }} </p>
         <p class="card-text">Fin de toma : {{formatTime(breastFeeding.end_time) }} </p>
-        <p class="card-text">Duración de toma : {{breastFeeding.durationInMinutes}} Minutos </p>
+        <p class="card-text">Duración de toma : {{formatDuration(breastFeeding.durationInMinutes) }}</p>
         <a class="btn btn-warning mx-2" [routerLink]="['/breastfeeding/edit', breastFeeding.id]">Editar</a>
         <a class="btn btn-danger mx-2" (click)="onDelete(breastFeeding.id)">Eliminar</a>
       </div>

@@ -11,6 +11,7 @@ import { BreastfeedingListComponent } from './Components/Breastfeeding/breastfee
 import { SleepFormComponent } from './Components/Sleep/sleep-form/sleep-form.component';
 import { SleepListComponent } from './Components/Sleep/sleep-list/sleep-list.component';
 import { BreastfeedingEditComponent } from './Components/Breastfeeding/breastfeeding-edit/breastfeeding-edit.component';
+import { SleepEditComponent } from './Components/Sleep/sleep-edit/sleep-edit.component';
 
 
 
@@ -22,7 +23,8 @@ import { BreastfeedingEditComponent } from './Components/Breastfeeding/breastfee
     BreastfeedingListComponent,
     SleepFormComponent,
     SleepListComponent,
-    BreastfeedingEditComponent
+    BreastfeedingEditComponent,
+    SleepEditComponent
   
   ],
   imports: [

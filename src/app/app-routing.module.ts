@@ -5,11 +5,13 @@ import { BreastfeedingListComponent } from './Components/Breastfeeding/breastfee
 import { SleepFormComponent } from './Components/Sleep/sleep-form/sleep-form.component';
 import { SleepListComponent } from './Components/Sleep/sleep-list/sleep-list.component';
 import { BreastfeedingEditComponent } from './Components/Breastfeeding/breastfeeding-edit/breastfeeding-edit.component';
+import { SleepEditComponent } from './Components/Sleep/sleep-edit/sleep-edit.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'breastfeeding-form'},
   {path: 'sleep-form', component: SleepFormComponent},
   {path: 'sleep-list', component: SleepListComponent },
+  {path: 'sleep/edit/:id', component: SleepEditComponent },
   {path: 'breastfeeding-form', component: BreastfeedingFormComponent},
   {path: 'breastfeeding-list', component: BreastfeedingListComponent },
   {path: 'breastfeeding/edit/:id', component: BreastfeedingEditComponent }

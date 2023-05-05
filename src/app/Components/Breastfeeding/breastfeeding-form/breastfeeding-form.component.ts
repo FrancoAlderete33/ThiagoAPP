@@ -57,7 +57,7 @@ export class BreastfeedingFormComponent {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Toma Cargada correctamente',
+        title: 'Lactancia Cargada correctamente',
         showConfirmButton: false,
         timer: 1500
       }).then((result => {

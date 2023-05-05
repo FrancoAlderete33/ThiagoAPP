@@ -6,15 +6,24 @@ import { SleepFormComponent } from './Components/Sleep/sleep-form/sleep-form.com
 import { SleepListComponent } from './Components/Sleep/sleep-list/sleep-list.component';
 import { BreastfeedingEditComponent } from './Components/Breastfeeding/breastfeeding-edit/breastfeeding-edit.component';
 import { SleepEditComponent } from './Components/Sleep/sleep-edit/sleep-edit.component';
+import { BowelmovementFormComponent } from './Components/Bowelmovement/bowelmovement-form/bowelmovement-form.component';
+import { BowelmovementListComponent } from './Components/Bowelmovement/bowelmovement-list/bowelmovement-list.component';
+import { BowelmovementEditComponent } from './Components/Bowelmovement/bowelmovement-edit/bowelmovement-edit.component';
+
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'breastfeeding-form'},
   {path: 'sleep-form', component: SleepFormComponent},
   {path: 'sleep-list', component: SleepListComponent },
   {path: 'sleep/edit/:id', component: SleepEditComponent },
+  
   {path: 'breastfeeding-form', component: BreastfeedingFormComponent},
   {path: 'breastfeeding-list', component: BreastfeedingListComponent },
-  {path: 'breastfeeding/edit/:id', component: BreastfeedingEditComponent }
+  {path: 'breastfeeding/edit/:id', component: BreastfeedingEditComponent },
+
+  {path: 'bowelmovement-form', component: BowelmovementFormComponent },
+  {path: 'bowelmovement-list', component: BowelmovementListComponent },
+  {path: 'bowelmovement/edit/:id', component: BowelmovementEditComponent }
 ];
 
 @NgModule({

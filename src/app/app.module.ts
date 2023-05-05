@@ -12,6 +12,10 @@ import { SleepFormComponent } from './Components/Sleep/sleep-form/sleep-form.com
 import { SleepListComponent } from './Components/Sleep/sleep-list/sleep-list.component';
 import { BreastfeedingEditComponent } from './Components/Breastfeeding/breastfeeding-edit/breastfeeding-edit.component';
 import { SleepEditComponent } from './Components/Sleep/sleep-edit/sleep-edit.component';
+import { BowelmovementEditComponent } from './Components/Bowelmovement/bowelmovement-edit/bowelmovement-edit.component';
+import { BowelmovementFormComponent } from './Components/Bowelmovement/bowelmovement-form/bowelmovement-form.component';
+import { BowelmovementListComponent } from './Components/Bowelmovement/bowelmovement-list/bowelmovement-list.component';
+
 
 
 
@@ -24,7 +28,11 @@ import { SleepEditComponent } from './Components/Sleep/sleep-edit/sleep-edit.com
     SleepFormComponent,
     SleepListComponent,
     BreastfeedingEditComponent,
-    SleepEditComponent
+    SleepEditComponent,
+    BowelmovementEditComponent,
+    BowelmovementFormComponent,
+    BowelmovementListComponent
+    
   
   ],
   imports: [

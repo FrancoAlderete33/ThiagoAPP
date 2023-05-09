@@ -26,6 +26,33 @@ export class BreastfeedingEditComponent {
     });
   }
 
+  // ngOnInit() {
+  //   const id = this.activatedRoute.snapshot.paramMap.get('id');
+  //   if (!id) {
+  //     console.error('ID no encontrado en la URL ');
+  //     return;
+  //   }
+  
+  //   const breastfeedingId = parseInt(id, 10);
+  //   this.breastfeedingId = breastfeedingId;
+  
+  //   this.breastfeedingService.getBreastfeedingById(breastfeedingId).subscribe(
+  //     (breastfeeding: any) => {
+  //       const startTime = breastfeeding.start_time.split('T')[1].slice(0, 5); // extraer solo la parte de tiempo
+  //       const endTime = breastfeeding.end_time.split('T')[1].slice(0, 5);
+  //       this.date = breastfeeding.date
+  //       this.breastfeedingForm.patchValue({
+  //         start_time: startTime,
+  //         end_time: endTime
+  //       });
+  //     },
+  //     (error: any) => console.log(error)
+  //   );
+
+ 
+    
+  // }
+
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (!id) {
@@ -38,18 +65,20 @@ export class BreastfeedingEditComponent {
   
     this.breastfeedingService.getBreastfeedingById(breastfeedingId).subscribe(
       (breastfeeding: any) => {
-        const startTime = breastfeeding.start_time.split('T')[1].slice(0, 5); // extraer solo la parte de tiempo
-        const endTime = breastfeeding.end_time.split('T')[1].slice(0, 5);
-        this.date = breastfeeding.date
+        const startTime = new Date(breastfeeding.start_time);
+        const endTime = new Date(breastfeeding.end_time);
+        this.date = breastfeeding.date;
+        startTime.setHours(startTime.getHours() + 4); // restar 2 horas a la hora de inicio
+        endTime.setHours(endTime.getHours() + 4); // restar 2 horas a la hora de fin
         this.breastfeedingForm.patchValue({
-          start_time: startTime,
-          end_time: endTime
+          start_time: startTime.toISOString().slice(11, 16),
+          end_time: endTime.toISOString().slice(11, 16)
         });
       },
       (error: any) => console.log(error)
     );
-
   }
+  
   
   
 

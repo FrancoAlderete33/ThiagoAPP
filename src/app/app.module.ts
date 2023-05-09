@@ -20,6 +20,7 @@ import { BowelmovementListComponent } from './Components/Bowelmovement/bowelmove
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,7 @@ import { BowelmovementListComponent } from './Components/Bowelmovement/bowelmove
     SleepEditComponent,
     BowelmovementEditComponent,
     BowelmovementFormComponent,
-    BowelmovementListComponent
+    BowelmovementListComponent,
     
   
   ],

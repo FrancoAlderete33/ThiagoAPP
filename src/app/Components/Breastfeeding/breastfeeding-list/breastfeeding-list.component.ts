@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { BreastfeedingService } from '../../../Services/breastfeeding.service';
 import { Router } from '@angular/router';
+
+import { BreastfeedingService } from '../../../Services/breastfeeding.service';
 import Swal from 'sweetalert2';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-breastfeeding-list',
@@ -11,18 +12,27 @@ import Swal from 'sweetalert2';
 })
 export class BreastfeedingListComponent {
   breastFeedings: any[] = [];
+  clientTimeZone!: string;
+  filterForm: FormGroup;
+  // breastFeedingsQuantity!: number ;
 
-
-  constructor(private breastfeedingService: BreastfeedingService,
-    private router: Router) { }
+  constructor(private breastfeedingService: BreastfeedingService, private router: Router) {
+    //Formulario para filtro por fecha
+    this.filterForm = new FormGroup({
+      filterDate: new FormControl('', [Validators.required])
+    });
+  }
 
   ngOnInit(): void {
     // Obtener la zona horaria del cliente desde el navegador
     const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
+    this.clientTimeZone = clientTimeZone;
     this.breastfeedingService.getBreastfeedingsByToday(clientTimeZone).subscribe(data => {
       this.breastFeedings = data;
     });
+
+    // this.breastFeedingsQuantity = this.breastFeedings.length;
+
   }
 
   //* Funcion para formatear el tiempo 
@@ -74,6 +84,39 @@ export class BreastfeedingListComponent {
       }
     });
   }
+
+  onFilterSubmit() {
+    const selectedDate = this.filterForm.value.filterDate;
+
+    if (selectedDate) {
+      const formattedDate = {
+        date: selectedDate,
+        clientTimeZone: this.clientTimeZone
+      };
+
+
+      this.breastfeedingService.getBreastfeedingsByDate(formattedDate).subscribe(
+        (response: any) => {
+          this.breastFeedings = response;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+
+    }
+  }
+
+  onResetFilters() {
+    // Resetear el valor del campo de fecha a null
+    this.filterForm.patchValue({ filterDate: null });
+
+    // Obtener los registros de lactancia del día actual
+    this.breastfeedingService.getBreastfeedingsByToday(this.clientTimeZone).subscribe(data => {
+      this.breastFeedings = data;
+    });
+  }
+
 
 
 }

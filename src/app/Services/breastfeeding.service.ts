@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 
 
 @Injectable({
@@ -11,10 +11,15 @@ export class BreastfeedingService {
 
   constructor(private httpClient: HttpClient) { }
 
-
+  
   createBreastfeeding(BreastFeedingObj: any) {
     return this.httpClient.post<any>(`${this.urlBase}NewOne`, BreastFeedingObj);
   }
+  
+  getBreastfeedingsByDate(formattedDate: any){
+    return this.httpClient.get<any>(`${this.urlBase}ByDate?date=${formattedDate.date}&clientTimeZone=${formattedDate.clientTimeZone}`);
+  }
+  
 
   getBreastfeedingsByToday(clientTimeZone: string) {
     return this.httpClient.get<any>(`${this.urlBase}Today?clientTimeZone=${clientTimeZone}`);

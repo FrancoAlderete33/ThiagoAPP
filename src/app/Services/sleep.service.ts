@@ -13,7 +13,7 @@ export class SleepService {
 
 
   createSleeps(SleepsObj: any) {
-    return this.httpClient.post<any>(`${this.urlBase}NewOne`, SleepsObj);
+    return this.httpClient.post<any>(`${this.urlBase}new`, SleepsObj);
   }
 
   getSleepsByToday(clientTimeZone: string) {

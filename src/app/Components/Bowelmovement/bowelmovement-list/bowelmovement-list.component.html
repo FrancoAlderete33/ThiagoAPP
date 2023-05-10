@@ -18,7 +18,7 @@
     </form>
   </div>
   <div *ngIf="bowelMovements.length > 0">
-    <p class="fs-5">Cantidad de heces realizadas: {{bowelMovements.length}}</p>
+    <p class="fs-5">N° Periodos controlados: {{bowelMovements.length}}</p>
   </div>
   <div *ngIf="bowelMovements.length > 0; else noBowelMovements" class="d-flex flex-wrap justify-content-center mt-4">
     <div *ngFor="let bowelMovement of bowelMovements" class="card text-center mb-3 mx-2" style="max-width: 18rem;">

@@ -9,10 +9,12 @@ import { SleepEditComponent } from './Components/Sleep/sleep-edit/sleep-edit.com
 import { BowelmovementFormComponent } from './Components/Bowelmovement/bowelmovement-form/bowelmovement-form.component';
 import { BowelmovementListComponent } from './Components/Bowelmovement/bowelmovement-list/bowelmovement-list.component';
 import { BowelmovementEditComponent } from './Components/Bowelmovement/bowelmovement-edit/bowelmovement-edit.component';
+import { CalendarComponent } from './Components/Calendar/calendar/calendar.component';
 
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'breastfeeding-form'},
+  {path: 'events', component: CalendarComponent},
   {path: 'sleep-form', component: SleepFormComponent},
   {path: 'sleep-list', component: SleepListComponent },
   {path: 'sleep/edit/:id', component: SleepEditComponent },

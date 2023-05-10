@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { SleepService } from '../../../Services/sleep.service';
 import Swal from 'sweetalert2';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sleep-list',
@@ -14,7 +13,11 @@ export class SleepListComponent {
   filterForm!: FormGroup;
   clientTimeZone!: string; 
 
-  constructor(private sleepService : SleepService){}
+  constructor(private sleepService : SleepService){
+    this.filterForm = new FormGroup({
+      filterDate: new FormControl('', [Validators.required])
+    });
+  }
 
   ngOnInit(): void {
      // Obtener la zona horaria del cliente desde el navegador

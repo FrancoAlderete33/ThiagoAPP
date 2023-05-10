@@ -17,6 +17,18 @@
       </div>
     </form>
   </div>
+
+
+  <div *ngIf="sleeps.length > 0">
+    <div>
+      <p class="fs-5">N° Periodos controlados: {{sleeps.length}}</p>
+    </div>
+
+    <div>
+      <p class="fs-5">Tiempo neto de sueño: 6 Horas</p>
+    </div>
+  </div>
+
   <div *ngIf="sleeps.length > 0; else nosleeps" class="d-flex flex-wrap justify-content-center mt-4">
     <div *ngFor="let sleep of sleeps" class="card text-center mb-3 mx-2" style="max-width: 18rem;">
       <div class="card-body">
@@ -29,7 +41,6 @@
       </div>
     </div>
   </div>
-
 
   <ng-template #nosleeps>
     <div class="d-flex justify-content-center align-items-center" style="height: 50vh;">

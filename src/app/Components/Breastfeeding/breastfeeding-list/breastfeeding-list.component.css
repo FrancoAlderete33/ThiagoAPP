@@ -1,4 +1,4 @@
-.img-background {
+/* .img-background {
   background-size: cover;
   position: fixed;
   right: 0;
@@ -7,7 +7,7 @@
   min-height: 100%;
   transform: translateX(calc((100% - 100vw) / 2));
   z-index: -1;
-  }
+  } */
 
 .ListContainer{
     display: flex;

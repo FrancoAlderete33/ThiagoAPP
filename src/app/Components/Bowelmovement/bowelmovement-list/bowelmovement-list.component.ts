@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BowelmovementService } from 'src/app/Services/bowelmovement.service';
 import Swal from 'sweetalert2';
@@ -10,15 +11,20 @@ import Swal from 'sweetalert2';
 })
 export class BowelmovementListComponent {
   bowelMovements: any[] = [];
-
+  filterForm!: FormGroup;
+  clientTimeZone!: string; 
 
   constructor(private bowelmovementService: BowelmovementService,
-    private router: Router) { }
+    private router: Router) {
+      this.filterForm = new FormGroup({
+        filterDate: new FormControl('', [Validators.required])
+      });
+     }
 
   ngOnInit(): void {
     // Obtener la zona horaria del cliente desde el navegador
     const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
+    this.clientTimeZone = clientTimeZone;
     this.bowelmovementService.getBowelMovementByToday(clientTimeZone).subscribe(data => {
       this.bowelMovements = data;
     });
@@ -64,4 +70,37 @@ export class BowelmovementListComponent {
       }
     });
   }
+
+  onFilterSubmit() {
+    const selectedDate = this.filterForm.value.filterDate;
+
+    if (selectedDate) {
+      const formattedDate = {
+        date: selectedDate,
+        clientTimeZone: this.clientTimeZone
+      };
+
+
+      this.bowelmovementService.getBreastfeedingsByDate(formattedDate).subscribe(
+        (response: any) => {
+          this.bowelMovements = response;
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+
+    }
+  }
+
+  onResetFilters() {
+    // Resetear el valor del campo de fecha a null
+    this.filterForm.patchValue({ filterDate: null });
+
+    // Obtener los registros de lactancia del día actual
+    this.bowelmovementService.getBowelMovementByToday(this.clientTimeZone).subscribe(data => {
+      this.bowelMovements = data;
+    });
+  }
+
 }

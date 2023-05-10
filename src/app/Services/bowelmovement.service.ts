@@ -26,6 +26,10 @@ export class BowelmovementService {
       );
   }
 
+  getBreastfeedingsByDate(formattedDate: any){
+    return this.httpClient.get<any>(`${this.urlBase}ByDate?date=${formattedDate.date}&clientTimeZone=${formattedDate.clientTimeZone}`);
+  }
+
   getBowelMovementByToday(clientTimeZone: string){
     return this.httpClient.get<any>(`${this.urlBase}Today?clientTimeZone=${clientTimeZone}`);
   }

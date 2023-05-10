@@ -30,9 +30,6 @@ export class BreastfeedingListComponent {
     this.breastfeedingService.getBreastfeedingsByToday(clientTimeZone).subscribe(data => {
       this.breastFeedings = data;
     });
-
-    // this.breastFeedingsQuantity = this.breastFeedings.length;
-
   }
 
   //* Funcion para formatear el tiempo 

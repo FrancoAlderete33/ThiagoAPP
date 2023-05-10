@@ -14,8 +14,7 @@ export class BowelmovementListComponent {
   filterForm!: FormGroup;
   clientTimeZone!: string; 
 
-  constructor(private bowelmovementService: BowelmovementService,
-    private router: Router) {
+  constructor(private bowelmovementService: BowelmovementService) {
       this.filterForm = new FormGroup({
         filterDate: new FormControl('', [Validators.required])
       });
@@ -81,7 +80,7 @@ export class BowelmovementListComponent {
       };
 
 
-      this.bowelmovementService.getBreastfeedingsByDate(formattedDate).subscribe(
+      this.bowelmovementService.getBowelMovementByDate(formattedDate).subscribe(
         (response: any) => {
           this.bowelMovements = response;
         },

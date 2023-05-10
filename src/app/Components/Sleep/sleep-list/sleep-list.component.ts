@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { SleepService } from '../../../Services/sleep.service';
 import Swal from 'sweetalert2';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-sleep-list',
@@ -10,13 +11,15 @@ import Swal from 'sweetalert2';
 })
 export class SleepListComponent {
   sleeps: any[] = [];
+  filterForm!: FormGroup;
+  clientTimeZone!: string; 
 
   constructor(private sleepService : SleepService){}
 
   ngOnInit(): void {
      // Obtener la zona horaria del cliente desde el navegador
      const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
+    this.clientTimeZone = clientTimeZone;
     this.sleepService.getSleepsByToday(clientTimeZone).subscribe((data => {
       this.sleeps = data;
     }))
@@ -70,4 +73,37 @@ export class SleepListComponent {
       }
     });
   }
+
+  onFilterSubmit() {
+    const selectedDate = this.filterForm.value.filterDate;
+
+    if (selectedDate) {
+      const formattedDate = {
+        date: selectedDate,
+        clientTimeZone: this.clientTimeZone
+      };
+
+
+      this.sleepService.getSleepsByDate(formattedDate).subscribe(
+        (response: any) => {
+          this.sleeps = response;
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+
+    }
+  }
+
+  onResetFilters() {
+    // Resetear el valor del campo de fecha a null
+    this.filterForm.patchValue({ filterDate: null });
+
+    // Obtener los registros de lactancia del día actual
+    this.sleepService.getSleepsByToday(this.clientTimeZone).subscribe(data => {
+      this.sleeps = data;
+    });
+  }
+
 }

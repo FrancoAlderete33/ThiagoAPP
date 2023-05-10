@@ -20,6 +20,10 @@ export class SleepService {
     return this.httpClient.get<any>(`${this.urlBase}Today?clientTimeZone=${clientTimeZone}`);
   }
 
+  getSleepsByDate(formattedDate: any){
+    return this.httpClient.get<any>(`${this.urlBase}ByDate?date=${formattedDate.date}&clientTimeZone=${formattedDate.clientTimeZone}`);
+  }
+
   getSleepById(id: number) {
     return this.httpClient.get<any>(`${this.urlBase}${id}`)
       .pipe(

@@ -1,16 +1,25 @@
-<form [formGroup]="calendarForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="title">Título:</label>
-      <input type="text" formControlName="title">
+<div class="container">
+    <div class="form-wrapper">
+      <h2 class="form-title">Añadir evento</h2>
+      <form [formGroup]="calendarForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="title">Título:</label>
+          <input type="text" formControlName="title">
+        </div>
+        <div>
+          <label for="description">Descripción:</label>
+          <textarea formControlName="description"></textarea>
+        </div>
+        <div>
+          <label for="date">Fecha:</label>
+          <input type="date" formControlName="date">
+        </div>
+        <div>
+            <label for="time">Hora:</label>
+            <input type="time" formControlName="time">
+          </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </form>
     </div>
-    <div>
-      <label for="description">Descripción:</label>
-      <textarea formControlName="description"></textarea>
-    </div>
-    <div>
-      <label for="date">Fecha:</label>
-      <input type="date" formControlName="date">
-    </div>
-    <button type="submit">Guardar</button>
-  </form>
+  </div>
   

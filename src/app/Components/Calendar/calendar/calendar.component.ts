@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CalendarService } from 'src/app/Services/calendar.service';
 
 @Component({
   selector: 'app-calendar',
@@ -9,17 +10,22 @@ import { FormGroup } from '@angular/forms';
 export class CalendarComponent {
   calendarForm!: FormGroup;
 
-  constructor(){
-
-  }
+  constructor(private calendarService: CalendarService){ }
 
 
   ngOnInit(){
-
+    this.calendarForm = new FormGroup({
+      title: new FormControl ('', [Validators.required]),
+      description: new FormControl ('', [Validators.required]),
+      time: new FormControl ('', [Validators.required]),
+      date: new FormControl ('', [Validators.required])
+    });
   }
 
 
   onSubmit(){
-    
+
   }
+
+
 }

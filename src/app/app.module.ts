@@ -16,6 +16,8 @@ import { BowelmovementEditComponent } from './Components/Bowelmovement/bowelmove
 import { BowelmovementFormComponent } from './Components/Bowelmovement/bowelmovement-form/bowelmovement-form.component';
 import { BowelmovementListComponent } from './Components/Bowelmovement/bowelmovement-list/bowelmovement-list.component';
 import { CalendarComponent } from './Components/Calendar/calendar/calendar.component';
+import { CalendarEditComponent } from './Components/Calendar/calendar-edit/calendar-edit.component';
+import { CalendarListComponent } from './Components/Calendar/calendar-list/calendar-list.component';
 
 
 
@@ -35,6 +37,8 @@ import { CalendarComponent } from './Components/Calendar/calendar/calendar.compo
     BowelmovementFormComponent,
     BowelmovementListComponent,
     CalendarComponent,
+    CalendarListComponent,
+    CalendarEditComponent,
     
   
   ],

@@ -14,7 +14,7 @@ export class BreastfeedingListComponent {
   breastFeedings: any[] = [];
   clientTimeZone!: string;
   filterForm: FormGroup;
-  // breastFeedingsQuantity!: number ;
+  breastFeedingsTotalMinutes!: number;
 
   constructor(private breastfeedingService: BreastfeedingService, private router: Router) {
     //Formulario para filtro por fecha
@@ -30,7 +30,12 @@ export class BreastfeedingListComponent {
     this.breastfeedingService.getBreastfeedingsByToday(clientTimeZone).subscribe(data => {
       this.breastFeedings = data;
     });
+
+    this.breastfeedingService.GetTotalBreastfeedingDurationByToday(clientTimeZone).subscribe(data => {
+      this.breastFeedingsTotalMinutes = data;
+    })
   }
+
 
   //* Funcion para formatear el tiempo 
   formatTime(dateString: string) {

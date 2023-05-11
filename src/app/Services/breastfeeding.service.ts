@@ -35,6 +35,10 @@ export class BreastfeedingService {
       );
   }
 
+  GetTotalBreastfeedingDurationByToday(clientTimeZone: string){
+    return this.httpClient.get<any>(`${this.urlBase}today/duration?clientTimeZone=${clientTimeZone}`);
+  }
+
   updateBreastfeeding(updatedBreastfeeding: any) {
     return this.httpClient.put<any>(`${this.urlBase}update/${updatedBreastfeeding.id}`, updatedBreastfeeding);
   }

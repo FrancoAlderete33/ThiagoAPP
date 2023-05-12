@@ -1,1 +1,42 @@
-<p>calendar-list works!</p>
+<div class="container">
+    <h2 class="text-center mt-4 mb-2 fw-bold">Eventos</h2>
+    <div class="d-flex justify-content-center mt-4 mb-4">
+      <form [formGroup]="filterForm" (ngSubmit)="onFilterSubmit()" class="d-flex flex-sm-row flex-column mx-auto">
+        <div class="d-flex mx-sm-3 mb-2 mb-sm-0">
+          <div class="mt-2 mx-2">
+            <label for="filterDate" class="sr-only">Filtrar por fecha:</label>
+          </div>
+          <div>
+            <input type="date" class="form-control" id="filterDate" formControlName="filterDate">
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-2 mt-sm-0">
+          <button type="submit" class="btn btn-primary mx-2 text-center" [disabled]="filterForm.invalid">Filtrar</button>
+          <button type="button" class="btn btn-secondary mx-2 text-center" [disabled]="filterForm.invalid"
+            (click)="onResetFilters()">Resetear</button>
+        </div>
+      </form>
+    </div>
+  
+    <div *ngIf="events.length > 0; else noEvents" class="d-flex flex-wrap justify-content-center mt-4">
+        <div *ngFor="let event of events" class="card text-center mb-3 mx-2" style="max-width: 100%;">
+          <div class="card-body">
+            <img src="../../../../assets/ducha-de-bebe.png" alt="" width="90px" height="90px" class="img-fluid mb-3">
+            <p class="card-text">Título: {{event.title}}</p>
+            <p class="card-text">Descripción: {{event.description}}</p>
+            <p class="card-text">Fecha: {{event.date | date: 'dd/MM'}}</p>
+            <p class="card-text">Horario: {{formatTime(event.timeEventStart)}}</p>
+            <a class="btn btn-warning mx-2" [routerLink]="['/event/edit', event.id]">Editar</a>
+            <a class="btn btn-danger mx-2" (click)="onDelete(event.id)">Eliminar</a>
+          </div>
+        </div>
+      </div>
+      
+      
+  
+    <ng-template #noEvents>
+      <div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+        <h3>No hay eventos para mostrar</h3>
+      </div>
+    </ng-template>
+  </div>

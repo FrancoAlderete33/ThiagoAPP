@@ -10,23 +10,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./breastfeeding-form.component.css']
 })
 export class BreastfeedingFormComponent {
-  breastfeedingForm!: FormGroup ; 
-  
-  constructor(private breasFeedingService : BreastfeedingService,
-              private activatedRoute : ActivatedRoute,
-              private router: Router){ }
+  breastfeedingForm!: FormGroup;
+
+  constructor(private breasFeedingService: BreastfeedingService,
+              private router: Router) { }
 
 
-  ngOnInit(){
+  ngOnInit() {
     this.breastfeedingForm = new FormGroup({
-      start_time: new FormControl ('', [Validators.required]),
-      end_time: new FormControl ('', [Validators.required])
+      start_time: new FormControl('', [Validators.required]),
+      end_time: new FormControl('', [Validators.required])
     })
   }
 
 
 
-  onSubmit(): void{
+  onSubmit(): void {
 
     const startTime = new Date();
     startTime.setHours(

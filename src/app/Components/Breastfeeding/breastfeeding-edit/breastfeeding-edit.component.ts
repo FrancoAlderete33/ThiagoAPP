@@ -13,11 +13,11 @@ import Swal from 'sweetalert2';
 export class BreastfeedingEditComponent {
   breastfeedingId!: number;
   breastfeedingForm!: FormGroup;
-  date!: string ; 
+  date!: string;
 
   constructor(
     private breastfeedingService: BreastfeedingService,
-    private route : Router,
+    private route: Router,
     private activatedRoute: ActivatedRoute
   ) {
     this.breastfeedingForm = new FormGroup({
@@ -26,43 +26,15 @@ export class BreastfeedingEditComponent {
     });
   }
 
-  // ngOnInit() {
-  //   const id = this.activatedRoute.snapshot.paramMap.get('id');
-  //   if (!id) {
-  //     console.error('ID no encontrado en la URL ');
-  //     return;
-  //   }
-  
-  //   const breastfeedingId = parseInt(id, 10);
-  //   this.breastfeedingId = breastfeedingId;
-  
-  //   this.breastfeedingService.getBreastfeedingById(breastfeedingId).subscribe(
-  //     (breastfeeding: any) => {
-  //       const startTime = breastfeeding.start_time.split('T')[1].slice(0, 5); // extraer solo la parte de tiempo
-  //       const endTime = breastfeeding.end_time.split('T')[1].slice(0, 5);
-  //       this.date = breastfeeding.date
-  //       this.breastfeedingForm.patchValue({
-  //         start_time: startTime,
-  //         end_time: endTime
-  //       });
-  //     },
-  //     (error: any) => console.log(error)
-  //   );
-
- 
-    
-  // }
-
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (!id) {
-      console.error('ID no encontrado en la URL ');
       return;
     }
-  
+
     const breastfeedingId = parseInt(id, 10);
     this.breastfeedingId = breastfeedingId;
-  
+
     this.breastfeedingService.getBreastfeedingById(breastfeedingId).subscribe(
       (breastfeeding: any) => {
         const startTime = new Date(breastfeeding.start_time);
@@ -78,9 +50,9 @@ export class BreastfeedingEditComponent {
       (error: any) => console.log(error)
     );
   }
-  
-  
-  
+
+
+
 
   onSubmit(): void {
     const startTime = new Date();
@@ -88,15 +60,15 @@ export class BreastfeedingEditComponent {
       parseInt(this.breastfeedingForm.value.start_time.split(':')[0]),
       parseInt(this.breastfeedingForm.value.start_time.split(':')[1])
     );
-  
+
     const endTime = new Date();
     endTime.setHours(
       parseInt(this.breastfeedingForm.value.end_time.split(':')[0]),
       parseInt(this.breastfeedingForm.value.end_time.split(':')[1])
     );
-  
+
     const duration = (endTime.getTime() - startTime.getTime()) / 60000; // Duración en minutos
-  
+
     const updatedBreastfeeding = {
       id: this.breastfeedingId,
       start_time: startTime.toISOString(),
@@ -104,7 +76,7 @@ export class BreastfeedingEditComponent {
       durationInMinutes: duration,
       date: this.date
     };
-  
+
     this.breastfeedingService.updateBreastfeeding(updatedBreastfeeding).subscribe(
       () => {
         console.log('Lactancia actualizada correctamente');
@@ -124,10 +96,10 @@ export class BreastfeedingEditComponent {
         console.error(error);
       }
     );
-  
+
     this.breastfeedingForm.reset();
   }
-  
+
 
 }
 

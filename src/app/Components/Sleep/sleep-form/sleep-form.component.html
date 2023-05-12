@@ -1,15 +1,20 @@
-<div class="d-flex align-items-center justify-content-center flex-column mt-4">
-  <h2 class="mb-4">Añadir Periodo de Sueño</h2>
-    <form [formGroup]="sleepForm" (ngSubmit)="onSubmit()" class="w-50">
-      <div class="form-group mb-3">
-        <label for="start-time">Inicio de sueño:</label>
-        <input type="time" id="start-time" formControlName="start_time" class="form-control">
-      </div>
-      <div class="form-group mb-3">
-        <label for="end-time">Fin de sueño:</label>
-        <input type="time" id="end-time" formControlName="end_time" class="form-control">
-      </div>
-      <button type="submit" class="btn btn-primary btn-block" [disabled]="sleepForm.invalid">Guardar</button>
-    </form>
+<div class="container my-4">
+  <h2 class="text-center mb-4">Añadir Periodo de Sueño</h2>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 col-md-6 col-lg-4">
+      <form [formGroup]="sleepForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label for="start-time">Comienzo de Sueño:</label>
+          <input type="time" id="start-time" formControlName="start_time" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+          <label for="end-time">Fin de Sueño:</label>
+          <input type="time" id="end-time" formControlName="end_time" class="form-control">
+        </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary" [disabled]="sleepForm.invalid">Guardar</button>
+        </div>
+      </form>
+    </div>
   </div>
-  
+</div>

@@ -11,21 +11,30 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class SleepListComponent {
   sleeps: any[] = [];
   filterForm!: FormGroup;
-  clientTimeZone!: string; 
+  clientTimeZone!: string;
+  sleepsTotalMinutes!: number;
 
-  constructor(private sleepService : SleepService){
+  constructor(private sleepService: SleepService) {
     this.filterForm = new FormGroup({
       filterDate: new FormControl('', [Validators.required])
     });
   }
 
   ngOnInit(): void {
-     // Obtener la zona horaria del cliente desde el navegador
-     const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // Obtener la zona horaria del cliente desde el navegador
+    const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     this.clientTimeZone = clientTimeZone;
-    this.sleepService.getSleepsByToday(clientTimeZone).subscribe((data => {
+    this.refreshData(); // Llamar al método para obtener los datos inicialmente
+  }
+
+  private refreshData(): void {
+    this.sleepService.getSleepsByToday(this.clientTimeZone).subscribe(data => {
       this.sleeps = data;
-    }))
+    });
+  
+    this.sleepService.GetTotalSleepsByToday(this.clientTimeZone).subscribe(data => {
+      this.sleepsTotalMinutes = data;
+    });
   }
 
   //* Funcion para formatear el tiempo

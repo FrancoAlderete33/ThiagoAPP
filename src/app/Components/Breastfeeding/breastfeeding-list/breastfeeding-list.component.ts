@@ -27,15 +27,18 @@ export class BreastfeedingListComponent {
     // Obtener la zona horaria del cliente desde el navegador
     const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     this.clientTimeZone = clientTimeZone;
-    this.breastfeedingService.getBreastfeedingsByToday(clientTimeZone).subscribe(data => {
+    this.refreshData(); // Llamar al método para obtener los datos inicialmente
+  }
+  
+  private refreshData(): void {
+    this.breastfeedingService.getBreastfeedingsByToday(this.clientTimeZone).subscribe(data => {
       this.breastFeedings = data;
     });
-
-    this.breastfeedingService.GetTotalBreastfeedingDurationByToday(clientTimeZone).subscribe(data => {
+  
+    this.breastfeedingService.GetTotalBreastfeedingDurationByToday(this.clientTimeZone).subscribe(data => {
       this.breastFeedingsTotalMinutes = data;
-    })
+    });
   }
-
 
   //* Funcion para formatear el tiempo 
   formatTime(dateString: string) {
@@ -77,10 +80,8 @@ export class BreastfeedingListComponent {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            // Actualizar la lista de periodos de lactancia después de eliminar uno
-            this.breastFeedings = this.breastFeedings.filter(
-              (breastFeeding) => breastFeeding.id !== breastFeedingId
-            )
+            // Llamar a la función para actualizar los datos después de eliminar uno
+            this.refreshData();
           });
         });
       }
@@ -96,16 +97,18 @@ export class BreastfeedingListComponent {
         clientTimeZone: this.clientTimeZone
       };
 
-
       this.breastfeedingService.getBreastfeedingsByDate(formattedDate).subscribe(
         (response: any) => {
           this.breastFeedings = response;
+          this.breastFeedingsTotalMinutes = 0; // Reiniciar el total de minutos
+          this.breastFeedings.forEach(breastFeeding => {
+            this.breastFeedingsTotalMinutes += breastFeeding.duration;
+          });
         },
         (error) => {
           console.log(error);
         }
       );
-
     }
   }
 
@@ -114,11 +117,7 @@ export class BreastfeedingListComponent {
     this.filterForm.patchValue({ filterDate: null });
 
     // Obtener los registros de lactancia del día actual
-    this.breastfeedingService.getBreastfeedingsByToday(this.clientTimeZone).subscribe(data => {
-      this.breastFeedings = data;
-    });
+    this.refreshData();
   }
-
-
 
 }

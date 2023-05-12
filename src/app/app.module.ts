@@ -15,7 +15,7 @@ import { SleepEditComponent } from './Components/Sleep/sleep-edit/sleep-edit.com
 import { BowelmovementEditComponent } from './Components/Bowelmovement/bowelmovement-edit/bowelmovement-edit.component';
 import { BowelmovementFormComponent } from './Components/Bowelmovement/bowelmovement-form/bowelmovement-form.component';
 import { BowelmovementListComponent } from './Components/Bowelmovement/bowelmovement-list/bowelmovement-list.component';
-import { CalendarComponent } from './Components/Calendar/calendar/calendar.component';
+import { CalendarComponent } from './Components/Calendar/calendar-form/calendar.component';
 import { CalendarEditComponent } from './Components/Calendar/calendar-edit/calendar-edit.component';
 import { CalendarListComponent } from './Components/Calendar/calendar-list/calendar-list.component';
 

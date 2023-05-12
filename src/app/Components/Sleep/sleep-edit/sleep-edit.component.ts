@@ -12,11 +12,11 @@ import Swal from 'sweetalert2';
 export class SleepEditComponent {
   sleepForm!: FormGroup;
   sleepId!: number;
-  date!: string ; 
+  date!: string;
 
   constructor(
     private sleepService: SleepService,
-    private route : Router,
+    private route: Router,
     private activatedRoute: ActivatedRoute
   ) {
     this.sleepForm = new FormGroup({
@@ -28,13 +28,12 @@ export class SleepEditComponent {
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (!id) {
-      console.error('ID no encontrado en la URL');
       return;
     }
-  
+
     const sleepId = parseInt(id, 10);
     this.sleepId = sleepId;
-  
+
     this.sleepService.getSleepById(sleepId).subscribe(
       (sleep: any) => {
         const startTime = sleep.start_time.split('T')[1].slice(0, 5); // extraer solo la parte de tiempo
@@ -49,8 +48,8 @@ export class SleepEditComponent {
     );
 
   }
-  
-  
+
+
 
   onSubmit(): void {
     const startTime = new Date();
@@ -58,15 +57,15 @@ export class SleepEditComponent {
       parseInt(this.sleepForm.value.start_time.split(':')[0]),
       parseInt(this.sleepForm.value.start_time.split(':')[1])
     );
-  
+
     const endTime = new Date();
     endTime.setHours(
       parseInt(this.sleepForm.value.end_time.split(':')[0]),
       parseInt(this.sleepForm.value.end_time.split(':')[1])
     );
-  
+
     const duration = (endTime.getTime() - startTime.getTime()) / 60000; // Duración en minutos
-  
+
     const updatedSleep = {
       id: this.sleepId,
       start_time: startTime.toISOString(),
@@ -74,10 +73,9 @@ export class SleepEditComponent {
       durationInMinutes: duration,
       date: this.date
     };
-  
+
     this.sleepService.updateSleep(updatedSleep).subscribe(
       () => {
-        console.log('Sueño actualizado correctamente');
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -94,8 +92,8 @@ export class SleepEditComponent {
         console.error(error);
       }
     );
-  
+
     this.sleepForm.reset();
   }
-  
+
 }

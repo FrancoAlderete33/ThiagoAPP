@@ -53,11 +53,10 @@ export class SleepFormComponent {
     };
 
     this.sleepService.createSleeps(sleepObj).subscribe(data => {
-      console.log('Lactancia guardada correctamente');
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Toma Cargada correctamente',
+        title: 'Sueño cargado correctamente',
         showConfirmButton: false,
         timer: 1500
       }).then((result => {

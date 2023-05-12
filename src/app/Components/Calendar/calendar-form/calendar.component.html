@@ -1,25 +1,26 @@
 <div class="container">
-    <div class="form-wrapper">
-      <h2 class="form-title">Añadir evento</h2>
-      <form [formGroup]="calendarForm" (ngSubmit)="onSubmit()">
-        <div>
-          <label for="title">Título:</label>
-          <input type="text" formControlName="title">
-        </div>
-        <div>
-          <label for="description">Descripción:</label>
-          <textarea formControlName="description"></textarea>
-        </div>
-        <div>
-          <label for="date">Fecha:</label>
-          <input type="date" formControlName="date">
-        </div>
-        <div>
-            <label for="time">Hora:</label>
-            <input type="time" formControlName="time">
-          </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </form>
-    </div>
+  <div class="form-wrapper">
+    <h2 class="form-title">Añadir evento</h2>
+    <form [formGroup]="calendarForm" (ngSubmit)="onSubmit()" class="form">
+      <div class="form-group">
+        <label for="title">Título:</label>
+        <input type="text" formControlName="title" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea formControlName="description" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="date">Fecha:</label>
+        <input type="date" formControlName="date" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="time">Hora:</label>
+        <input type="time" formControlName="time" class="form-control">
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-success" [disabled]="calendarForm.invalid">Guardar</button>
+      </div>
+    </form>
   </div>
-  
+</div>

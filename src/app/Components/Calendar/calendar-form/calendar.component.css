@@ -21,11 +21,14 @@
     padding: 1.2rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-image:url(https://e0.pxfuel.com/wallpapers/449/659/desktop-wallpaper-blue-hand-drawn-school-clouds-moon-stars-background-material-star-background-baby-graphy-backdrop-stars-and-moon-thumbnail.jpg);
   }
   
   label {
     display: block;
-    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
   }
   
   input[type="text"], textarea, input[type="date"] {

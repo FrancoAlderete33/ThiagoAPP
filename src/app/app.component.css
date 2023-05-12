@@ -12,7 +12,6 @@ main {
 header {
   width: 100%;
   background: #ef9a9a;
-  padding: 10px 0px 10px 0px;
 }
 
 #btn-menu {
@@ -53,8 +52,8 @@ header label:hover {
 
 .img-menu {
   width: 60px;
-  padding-left: 15px;
-  margin-right: 0.5rem;
+  padding: 0.2rem;
+margin: 0.2rem;
 
 }
 
@@ -94,7 +93,7 @@ header label:hover {
   }
 
   .img-menu {
-    width: 45px;
+    width: 55px;
     padding-left: 15px;
 
   }
@@ -164,7 +163,7 @@ nav a {
 /* Estilos responsivos */
 @media screen and (max-width: 991px) {
   footer {
-    height: 260px;
+    height: 330px;
   }
 
 

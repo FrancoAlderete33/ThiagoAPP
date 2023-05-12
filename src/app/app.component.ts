@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +12,11 @@ export class AppComponent {
 
   toggleFooter() {
     this.hideFooter = !this.hideFooter;
+  }
+
+  @ViewChild('menuCheckbox') menuCheckbox: any;
+
+  closeMenu(menuCheckbox: any) {
+    menuCheckbox.checked = false;
   }
 }

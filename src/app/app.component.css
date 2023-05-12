@@ -71,7 +71,7 @@ header label:hover {
     margin-left: -70%;
     transition: all 1s;
     z-index: 1;
-
+    border-radius: 0rem 0rem 1rem 0rem;
   }
 
   .menu ul {
@@ -86,7 +86,7 @@ header label:hover {
 
   .menu li a:hover {
     background: #ffcdd2;
-
+    border-radius: 1rem 1rem 1rem 1rem;
   }
 
   #btn-menu:checked~.menu {

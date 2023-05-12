@@ -31,7 +31,7 @@ export class SleepListComponent {
     this.sleepService.getSleepsByToday(this.clientTimeZone).subscribe(data => {
       this.sleeps = data;
     });
-  
+
     this.sleepService.GetTotalSleepsByToday(this.clientTimeZone).subscribe(data => {
       this.sleepsTotalMinutes = data;
     });
@@ -76,10 +76,8 @@ export class SleepListComponent {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            // Actualizar la lista de periodos de lactancia después de eliminar uno
-            this.sleeps = this.sleeps.filter(
-              (sleep) => sleep.id !== sleepgId
-            )
+            // Llamar a la función para actualizar los datos después de eliminar uno
+            this.refreshData();
           });
         });
       }
@@ -108,14 +106,13 @@ export class SleepListComponent {
     }
   }
 
+
   onResetFilters() {
     // Resetear el valor del campo de fecha a null
     this.filterForm.patchValue({ filterDate: null });
 
     // Obtener los registros de lactancia del día actual
-    this.sleepService.getSleepsByToday(this.clientTimeZone).subscribe(data => {
-      this.sleeps = data;
-    });
+    this.refreshData();
   }
 
 }

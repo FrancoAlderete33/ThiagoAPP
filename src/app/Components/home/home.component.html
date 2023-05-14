@@ -1,0 +1,23 @@
+<div class="container">
+    <h2 class="section-title">Últimos registros</h2>
+    
+    <div class="d-flex flex-wrap justify-content-center mt-4">
+        <div class="card text-center mb-3 mx-2" style="width: 18rem;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="../../../../assets/amamantamiento.png" alt="" width="90px" height="90px"
+                        class="img-fluid mb-3">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">Fecha: {{firstBreastFeeding?.date | date: "dd/mm"}}</p>
+                        <p class="card-text">{{ formatTime(firstBreastFeeding?.start_time) }} - {{
+                            formatTime(firstBreastFeeding?.end_time) }}</p>
+                        <p class="card-text">Duración: {{formatDuration(firstBreastFeeding?.durationInMinutes)}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -12,10 +12,12 @@ import { BowelmovementEditComponent } from './Components/Bowelmovement/bowelmove
 import { CalendarComponent } from './Components/Calendar/calendar-form/calendar.component';
 import { CalendarListComponent } from './Components/Calendar/calendar-list/calendar-list.component';
 import { CalendarEditComponent } from './Components/Calendar/calendar-edit/calendar-edit.component';
+import { HomeComponent } from './Components/home/home.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'breastfeeding-form'},
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {path: 'home', component: HomeComponent},
   {path: 'events', component: CalendarComponent},
   {path: 'events-list', component: CalendarListComponent},
   {path: 'event/edit/:id', component: CalendarEditComponent},

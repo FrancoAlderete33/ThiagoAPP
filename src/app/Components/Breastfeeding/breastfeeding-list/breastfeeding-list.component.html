@@ -2,7 +2,7 @@
   <h2 class="text-center mt-4 mb-2 fw-bold">Control de Lactancia</h2>
   <div class="d-flex justify-content-center mt-4 mb-4">
     <form [formGroup]="filterForm" (ngSubmit)="onFilterSubmit()" class="d-flex flex-sm-row flex-column mx-auto">
-      <div class="d-flex mx-sm-3 mb-2 mb-sm-0">
+      <div class="d-flex mx-sm-3 mt-2 mb-sm-0">
         <div class="mt-2 mx-2">
           <label for="filterDate" class="sr-only">Filtrar por fecha:</label>
         </div>
@@ -10,34 +10,39 @@
           <input type="date" class="form-control" id="filterDate" formControlName="filterDate">
         </div>
       </div>
-      <div class="d-flex justify-content-center mt-2 mt-sm-0">
-        <button type="submit" class="btn btn-primary mx-2 text-center" [disabled]="filterForm.invalid">Filtrar</button>
-        <button type="button" class="btn btn-secondary mx-2 text-center" [disabled]="filterForm.invalid"
-          (click)="onResetFilters()">Resetear</button>
+      <div class="d-flex justify-content-center mt-sm-0">
+        <button type="submit" class="btn btn-link btn-sm " [disabled]="filterForm.invalid"><img class="iconButton" src="../../../../assets/filtrar.png" alt="Filtrar"></button>
+
+        <button type="button" class="btn btn-link btn-sm " [disabled]="filterForm.invalid"
+          (click)="onResetFilters()"><img class="iconButton" src="../../../../assets/reiniciar.png" alt="Reset"></button>
+        
       </div>
     </form>
   </div>
 
   <div *ngIf="breastFeedings.length > 0">
     <div>
-      <p class="fs-5">N° Periodos controlados: {{breastFeedings.length}}</p>
+      <p class="fs-6">N° Periodos controlados: {{breastFeedings.length}}</p>
     </div>
 
     <div>
-      <p class="fs-5">Tiempo neto de lactancia: {{formatDuration(breastFeedingsTotalMinutes) }}</p>
+      <p class="fs-6">Tiempo neto de lactancia: {{formatDuration(breastFeedingsTotalMinutes) }}</p>
     </div>
   </div>
 
   <div *ngIf="breastFeedings.length > 0; else noBreastFeedings" class="d-flex flex-wrap justify-content-center mt-4">
 
-    <div *ngFor="let breastFeeding of breastFeedings" class="card text-center mb-3 mx-2" style="max-width: 100%;">
+    <div *ngFor="let breastFeeding of breastFeedings" class="card text-center mb-3 mx-2">
       <div class="card-body">
         <img src="../../../../assets/amamantamiento.png" alt="" class="img-fluid mb-3">
-        <p class="card-text">Inicio de toma : {{formatTime(breastFeeding.start_time) }} </p>
-        <p class="card-text">Fin de toma : {{formatTime(breastFeeding.end_time) }} </p>
-        <p class="card-text">Duración de toma : {{formatDuration(breastFeeding.durationInMinutes) }}</p>
-        <a class="btn btn-warning mx-2" [routerLink]="['/breastfeeding/edit', breastFeeding.id]">Editar</a>
-        <a class="btn btn-danger mx-2" (click)="onDelete(breastFeeding.id)">Eliminar</a>
+        <p class="card-text">De {{formatTime(breastFeeding.start_time) }} hasta {{formatTime(breastFeeding.end_time) }}</p>
+        <p class="card-text">Duración: {{formatDuration(breastFeeding.durationInMinutes) }}</p>
+
+        <a class="btn btn-link btn-sm mx-2" [routerLink]="['/breastfeeding/edit', breastFeeding.id]"><img class="iconButton" src="../../../../assets/editar.png" alt="Editar"></a>
+
+        <a class="btn btn-link btn-sm mx-2" (click)="onDelete(breastFeeding.id)">
+          <img class="iconButton" src="../../../../assets/eliminar.png" alt="Eliminar">
+        </a>        
       </div>
     </div>
   </div>

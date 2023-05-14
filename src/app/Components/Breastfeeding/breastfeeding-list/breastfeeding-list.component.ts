@@ -55,7 +55,7 @@ export class BreastfeedingListComponent {
   formatDuration(durationInMinutes: number): string {
     const hours = Math.floor(durationInMinutes / 60);
     const minutes = durationInMinutes % 60;
-    const hoursString = hours > 0 ? `${hours} hora${hours > 1 ? 's' : ''}` : '';
+    const hoursString = hours > 0 ? `${hours} h${hours > 1 ? 's' : ''}` : '';
     const minutesString = minutes > 0 ? `${minutes} minuto${minutes > 1 ? 's' : ''}` : '';
     return `${hoursString} ${minutesString}`;
   }

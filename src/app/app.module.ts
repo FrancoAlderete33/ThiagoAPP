@@ -18,6 +18,7 @@ import { BowelmovementListComponent } from './Components/Bowelmovement/bowelmove
 import { CalendarComponent } from './Components/Calendar/calendar-form/calendar.component';
 import { CalendarEditComponent } from './Components/Calendar/calendar-edit/calendar-edit.component';
 import { CalendarListComponent } from './Components/Calendar/calendar-list/calendar-list.component';
+import { HomeComponent } from './Components/home/home.component';
 
 
 
@@ -39,6 +40,7 @@ import { CalendarListComponent } from './Components/Calendar/calendar-list/calen
     CalendarComponent,
     CalendarListComponent,
     CalendarEditComponent,
+    HomeComponent,
     
   
   ],

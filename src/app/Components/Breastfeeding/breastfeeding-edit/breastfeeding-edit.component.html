@@ -13,9 +13,11 @@
           <input type="time" id="end-time" formControlName="end_time" class="form-control">
         </div>
         <div class="d-grid gap-2 buttons-row">
-          <button type="button" routerLink="/breastfeeding-list" class="btn btn-danger"
-              [disabled]="breastfeedingForm.invalid">Cancelar</button>
-          <button type="submit" class="btn btn-primary" [disabled]="breastfeedingForm.invalid">Guardar</button>
+          <button type="button" routerLink="/breastfeeding-list" class="btn btn-link btn-sm"
+              [disabled]="breastfeedingForm.invalid"><img class="iconButton" src="../../../../assets/cancelar.png" alt="Guardar"></button>
+
+          <button type="submit" class="btn btn-link btn-sm" [disabled]="breastfeedingForm.invalid"><img class="iconButton" src="../../../../assets/guardar-el-archivo.png" alt="Guardar"></button>
+    
       </div>
       </form>
     </div>
